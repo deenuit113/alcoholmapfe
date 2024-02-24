@@ -29,6 +29,10 @@ export default function MapPage() {
         router.push("../signup")
     }
 
+    const onClickReload = () => {
+        window.location.reload();
+    }
+
     return (
         <>
             <script 
@@ -37,7 +41,7 @@ export default function MapPage() {
             ></script>
             <Wrapper>
                 <AMHeader>
-                    <AMTitle>AlcoholMap</AMTitle>
+                    <AMTitle onClick={onClickReload}>AlcoholMap</AMTitle>
                 </AMHeader>
                 <MapNav>
                     <LoginButton onClick={onClickLogin}>로그인</LoginButton>
