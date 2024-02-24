@@ -15,6 +15,8 @@ export const MapNav = styled.nav`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
 `
 
 export const MapMain = styled.main`
