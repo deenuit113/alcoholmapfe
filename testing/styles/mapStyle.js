@@ -1,7 +1,23 @@
 import styled from "@emotion/styled";
 
+export const Wrapper = styled.div`
+    width: 600px;
+    /* height: 1847px; */
+    border: 1px solid black;
+    margin: 0 auto;
+    padding-top: 80px;
+    padding-bottom: 100px;
+    padding-left: 102px;
+    padding-right: 102px;
+    display: flex;
+    flex-direction: column;
+    align-items: ;
+    justify-content: flex-start;
+    border: none;
+    box-shadow: 0px 0px 10px gray;
+`;
 
-export const MapHeader = styled.header`
+export const AMHeader = styled.header`
     
 `
 
@@ -10,7 +26,7 @@ export const AMTitle = styled.h1`
 ` 
 
 export const MapNav = styled.nav`
-    width: 700px;
+    width: 600px;
     display: inline-block;
     flex-direction: column;
     align-items: center;

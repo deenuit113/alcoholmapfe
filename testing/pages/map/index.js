@@ -1,4 +1,4 @@
-import { AMTitle, MapHeader, MapMain, MypageButton, MapNav, LoginButton, SignupButton} from '../../styles/mapStyle'
+import { Wrapper, AMTitle, AMHeader, MapMain, MypageButton, MapNav, LoginButton, SignupButton} from '../../styles/mapStyle'
 import { useEffect, useState } from 'react'
 
 import { useRouter } from 'next/router'
@@ -35,15 +35,17 @@ export default function MapPage() {
                 type="text/javascript" 
                 src="//dapi.kakao.com/v2/maps/sdk.js?appkey=874eea7b48b7810e4c254737d3892e8f"
             ></script>
-            <MapHeader>
-                <AMTitle>AlcoholMap</AMTitle>
-            </MapHeader>
-            <MapNav>
-                <LoginButton onClick={onClickLogin}>로그인</LoginButton>
-                <SignupButton onClick={onClickSignup}>회원가입</SignupButton>
-                <MypageButton onClick={onClickMypage}>마이페이지</MypageButton>
-            </MapNav>
-            <MapMain id="map"></MapMain>
+            <Wrapper>
+                <AMHeader>
+                    <AMTitle>AlcoholMap</AMTitle>
+                </AMHeader>
+                <MapNav>
+                    <LoginButton onClick={onClickLogin}>로그인</LoginButton>
+                    <SignupButton onClick={onClickSignup}>회원가입</SignupButton>
+                    <MypageButton onClick={onClickMypage}>마이페이지</MypageButton>
+                </MapNav>
+                <MapMain id="map"></MapMain>
+            </Wrapper>
         </>
         
 
