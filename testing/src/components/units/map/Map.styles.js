@@ -73,3 +73,26 @@ export const MypageButton = styled.button`
     margin-left: 10px;
     border-radius: 3px 3px 3px 3px;
 `
+
+export const SearchWrapper = styled.div`
+    width: 500px;
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+`
+
+export const SearchButton = styled.button`
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    width: 100px;
+    float: right;
+`
+
+export const InputKeyword = styled.input`
+    width: 200px;
+    height: 20px;
+    font-size: 15px;
+    margin-top: 15px;
+`
