@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import SignupUI from './Signup.presenter'
 import axios from 'axios';
+import { useRouter } from 'next/router'
 
 /*  백엔드 서버에 이메일아이디 + @ + 도메인 합쳐서 보내기
     비밀번호 보내기
@@ -12,6 +13,9 @@ import axios from 'axios';
 const apiUrl = '/user/signup';
 
 export default function SignupPage(){
+
+    const router = useRouter()
+
     const [emailError, setEmailError] = useState("")
     const [pwError, setPwError] = useState("")
     const [capaError, setCapaError] = useState("")
@@ -22,12 +26,22 @@ export default function SignupPage(){
     });
 
 
-    const onChangeInput = (e) => {
-        const { name, value } = e.target;
+    const onChangeInput = (event) => {
+        const { name, value } = event.target;
         setFormData({
             ...formData,
             [name]: value,
         });
+        if(name === "email" && event.target.value !== ""){
+            setEmailError("")
+        }
+        if(name === "password" && event.target.value !== ""){
+            setPwError("")
+        }
+        if(name === "capaSoju" && event.target.value !== ""){
+            setCapaError("")
+        }
+        
     };
 
     const onClickSubmit = () => {
@@ -46,7 +60,11 @@ export default function SignupPage(){
             setCapaError("주량을 입력하세요.")
             errorcode = 1
         }
-        console.log(formData)
+        
+        if(errorcode === 0){
+            console.log(formData)
+        }
+        
     };
 
     const handleFormSubmit = async (e, formData) => {
@@ -59,6 +77,10 @@ export default function SignupPage(){
             console.error('error submitting data:', error);
         }
     };
+
+    const onClickMoveToMainpage = () => {
+        router.push("../map")
+    }
 
     
 
@@ -99,6 +121,7 @@ export default function SignupPage(){
             onChangeInput = {onChangeInput}
             formData = {formData}
             handleFormSubmit = {handleFormSubmit}
+            onClickMoveToMainpage = {onClickMoveToMainpage}
         />
     )
 }
