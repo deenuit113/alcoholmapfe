@@ -11,21 +11,21 @@ export default function MapUI(props) {
                     <S.SignupButton onClick={props.onClickMoveToSignup}>회원가입</S.SignupButton>
                     <S.MypageButton onClick={props.onClickMoveToMypage}>마이페이지</S.MypageButton>
                 </S.MapNav>
-                <S.MapMain id="map"></S.MapMain>
-                <div id="menu_wrap" class="bg_white">
-                    <S.SearchWrapper>
-                        키워드 : <S.InputKeyword
-                        type="text"
-                        placeholder = "검색하세요"
-                        id="keyword"
-                        value = "노원역"
-                        onChange= {props.onChangeKeyword}/> 
-                        <S.SearchButton onClick={props.onClickMapSearch}>검색하기</S.SearchButton> 
-                    </S.SearchWrapper>
-                    <hr/>
-                    <ul id="placesList"></ul>
-                    <div id="pagination"></div>
-                </div>
+                <S.MapWrap>
+                    <S.MapMain id="map"></S.MapMain>
+                    <S.MenuWrap id="menu_wrap" className="bg_white">
+                        <S.SearchWrapper>
+                        <S.Form onSubmit={() => props.searchPlaces}>
+                            키워드 : 
+                            <S.InputKeyword type="text" value={props.keyword} id="keyword" size="15" onChange={props.onChangeKeyword}/>
+                            <S.SearchButton type="submit">검색하기</S.SearchButton>
+                        </S.Form>
+                        </S.SearchWrapper>
+                        <hr />
+                        <S.PlacesList id="placesList"></S.PlacesList>
+                        <S.Pagination id="pagination"></S.Pagination>
+                    </S.MenuWrap>
+                </S.MapWrap>
             </S.Wrapper>
     )
 }

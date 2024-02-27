@@ -3,13 +3,16 @@ import { useRouter } from 'next/router'
 import MapUI from './Map.presenter';
 import Head from 'next/head';
 import Script from 'next/script';
+
 export default function MapPage() {
     
     const router = useRouter()
 
-    const [keyword,setKeyword] = useState("")
+    const [keyword,setKeyword] = useState("술집")
 
     const [kwError, setKwError] = useState("")
+
+    let markers = [];
 
     useEffect(() => {
         const container = document.getElementById('map'); // 지도를 담을 영역의 DOM 레퍼런스
@@ -22,26 +25,31 @@ export default function MapPage() {
 
         const ps = new kakao.maps.services.Places(); //장소 검색 객체를 생성
 
-        var infowindow = new kakao.maps.InfoWindow({
+        let infowindow = new kakao.maps.InfoWindow({
             map: map, // 인포윈도우가 표시될 지도
             position : options.center,
             content : "김세영입니다.",
         });
+        searchPlaces();
     }, []);
 
     // -----------------------------------------------
 
+    
+
+// 키워드 검색을 요청하는 함수입니다
     const searchPlaces = () => {
-        const ps = new kakao.maps.services.Places()
+        const ps = new kakao.maps.services.Places();
         const keyword = document.getElementById('keyword').value;
+
         if (!keyword.replace(/^\s+|\s+$/g, '')) {
             alert('키워드를 입력해주세요!');
             return false;
         }
-        ps.keywordSearch(keyword, placesSearchCB);
-    }
 
-    searchPlaces();
+    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+        ps.keywordSearch( keyword, placesSearchCB); 
+    }
 
     const placesSearchCB = (data, status, pagination) => {
         if (status === kakao.maps.services.Status.OK) {
@@ -62,12 +70,13 @@ export default function MapPage() {
     
             alert('검색 결과 중 오류가 발생했습니다.');
             return;
+    
         }
     }
 
     const displayPlaces = (places) => {
 
-        const listEl = document.getElementById('placesList'), 
+        let listEl = document.getElementById('placesList'), 
         menuEl = document.getElementById('menu_wrap'),
         fragment = document.createDocumentFragment(), 
         bounds = new kakao.maps.LatLngBounds(), 
@@ -79,10 +88,10 @@ export default function MapPage() {
         // 지도에 표시되고 있는 마커를 제거합니다
         removeMarker();
         
-        for (var i=0; i<places.length; i++ ) {
+        for (let i=0; i<places.length; i++ ) {
     
             // 마커를 생성하고 지도에 표시합니다
-            var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
+            let placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
                 marker = addMarker(placePosition, i), 
                 itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
     
@@ -146,7 +155,7 @@ export default function MapPage() {
     }
 
     const addMarker = (position, idx, title) => {
-        const imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+        let imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
             imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
             imgOptions =  {
                 spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
@@ -166,14 +175,14 @@ export default function MapPage() {
     }
 
     const removeMarker = () => {
-        for ( var i = 0; i < markers.length; i++ ) {
+        for (let i = 0; i < markers.length; i++ ) {
             markers[i].setMap(null);
         }   
         markers = [];
     }
 
     const displayPagination = (pagination) => {
-        const paginationEl = document.getElementById('pagination'),
+        let paginationEl = document.getElementById('pagination'),
             fragment = document.createDocumentFragment(),
             i; 
     
@@ -183,7 +192,7 @@ export default function MapPage() {
         }
     
         for (i=1; i<=pagination.last; i++) {
-            var el = document.createElement('a');
+            let el = document.createElement('a');
             el.href = "#";
             el.innerHTML = i;
     
@@ -203,7 +212,8 @@ export default function MapPage() {
     }
 
     const displayInfowindow = (marker, title) => {
-        var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
+        let content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
     
         infowindow.setContent(content);
         infowindow.open(map, marker);
@@ -233,10 +243,6 @@ export default function MapPage() {
         window.location.reload();
     }
 
-    const onClickMapSearch = () => {
-        const keyword = document.getElementById('keyword').value
-    }
-
     const onChangeKeyword = (event) => {
         setKeyword(event.target.value)
         if(event.target.value !== ""){
@@ -252,6 +258,7 @@ export default function MapPage() {
                 <script
                     type="text/javascript" 
                     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=874eea7b48b7810e4c254737d3892e8f&libraries=services"
+                    strategy ="lazyOnload"
                 ></script>
             </Head>
            
@@ -260,8 +267,9 @@ export default function MapPage() {
                 onClickMoveToLogin = {onClickMoveToLogin}
                 onClickMoveToSignup = {onClickMoveToSignup}
                 onClickReload = {onClickReload}
-                onClickMapSearch = {onClickMapSearch}
                 onChangeKeyword = {onChangeKeyword}
+                keyword = {keyword}
+                searchPlaces = {searchPlaces}
             />
         </>
         
