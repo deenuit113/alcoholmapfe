@@ -8,30 +8,52 @@ export default function MapPage() {
     
     const router = useRouter()
 
-    const [keyword,setKeyword] = useState("술집")
-
-    const [kwError, setKwError] = useState("")
-
+    const [keyword, setKeyword] = useState("술집");
+    const [kwError, setKwError] = useState("");
+    const [container, setContainer] = useState(null);
+    const [options, setOptions] = useState(null);
+    const [map, setMap] = useState(null);
+    const [ps, setPs] = useState(null);
+    const [infowindow, setInfowindow] = useState(null);
     let markers = [];
 
     useEffect(() => {
-        const container = document.getElementById('map'); // 지도를 담을 영역의 DOM 레퍼런스
-        const options = { // 지도를 생성할 때 필요한 기본 옵션
-	        center: new window.kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-	        level: 3 // 지도의 레벨(확대, 축소 정도)
+        const fetchData = async () => {
+            const options = {
+                center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+                level: 3,
+            };
+    
+            setOptions(options);
+            setContainer(document.getElementById('map'));
+    
+            const newMap = new window.kakao.maps.Map(container, options);
+            setMap(newMap);
+    
+            const newPs = new window.kakao.maps.services.Places();
+            setPs(newPs);
+    
+            const newInfowindow = new window.kakao.maps.InfoWindow({
+                map: newMap,
+                position: options.center,
+                content: '김세영입니다.',
+            });
+            setInfowindow(newInfowindow);
+    
+            try {
+                await searchPlaces();
+            } catch (error) {
+                // handle error
+            }
         };
-
-        const map = new window.kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
-
-        const ps = new kakao.maps.services.Places(); //장소 검색 객체를 생성
-
-        let infowindow = new kakao.maps.InfoWindow({
-            map: map, // 인포윈도우가 표시될 지도
-            position : options.center,
-            content : "김세영입니다.",
-        });
-        searchPlaces();
-    }, []);
+    
+        fetchData();
+    
+        // cleanup function to cancel async tasks if component unmounts
+        return () => {
+            // Cancel or cleanup async tasks if needed
+        };
+    }, [container]);
 
     // -----------------------------------------------
 
