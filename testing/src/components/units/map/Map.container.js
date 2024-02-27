@@ -15,7 +15,7 @@ export default function MapPage() {
     const [map, setMap] = useState(null);
     const [ps, setPs] = useState(null);
     const [infowindow, setInfowindow] = useState(null);
-    let markers = [];
+    const [markers, setMarkers] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,37 +23,39 @@ export default function MapPage() {
                 center: new window.kakao.maps.LatLng(33.450701, 126.570667),
                 level: 3,
             };
-    
+        
             setOptions(options);
-            setContainer(document.getElementById('map'));
-    
-            const newMap = new window.kakao.maps.Map(container, options);
+        
+            // 기존의 맵이 있으면 그 맵을 사용하고, 없으면 새로운 맵을 생성
+            const newMap = map || new window.kakao.maps.Map(
+                document.getElementById('map'),
+                options
+            );
             setMap(newMap);
-    
+        
             const newPs = new window.kakao.maps.services.Places();
             setPs(newPs);
-    
+        
             const newInfowindow = new window.kakao.maps.InfoWindow({
                 map: newMap,
                 position: options.center,
-                content: '김세영입니다.',
+                content: '',
             });
             setInfowindow(newInfowindow);
-    
+        
             try {
                 await searchPlaces();
             } catch (error) {
                 // handle error
             }
         };
-    
+      
         fetchData();
-    
-        // cleanup function to cancel async tasks if component unmounts
+      
         return () => {
-            // Cancel or cleanup async tasks if needed
+          // cleanup
         };
-    }, [container]);
+      }, [map]); // map이 변경될 때만 useEffect 재실행
 
     // -----------------------------------------------
 
@@ -61,7 +63,6 @@ export default function MapPage() {
 
 // 키워드 검색을 요청하는 함수입니다
     const searchPlaces = () => {
-        const ps = new kakao.maps.services.Places();
         const keyword = document.getElementById('keyword').value;
 
         if (!keyword.replace(/^\s+|\s+$/g, '')) {
@@ -97,12 +98,11 @@ export default function MapPage() {
     }
 
     const displayPlaces = (places) => {
-
         let listEl = document.getElementById('placesList'), 
-        menuEl = document.getElementById('menu_wrap'),
-        fragment = document.createDocumentFragment(), 
-        bounds = new kakao.maps.LatLngBounds(), 
-        listStr = '';
+            menuEl = document.getElementById('menu_wrap'),
+            fragment = document.createDocumentFragment(), 
+            bounds = new kakao.maps.LatLngBounds(), 
+            listStr = '';
         
         // 검색 결과 목록에 추가된 항목들을 제거합니다
         removeAllChildNods(listEl);
@@ -110,8 +110,10 @@ export default function MapPage() {
         // 지도에 표시되고 있는 마커를 제거합니다
         removeMarker();
         
-        for (let i=0; i<places.length; i++ ) {
+        // 마커 배열 초기화
+        setMarkers([])
     
+        for (let i=0; i<places.length; i++ ) {
             // 마커를 생성하고 지도에 표시합니다
             let placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
                 marker = addMarker(placePosition, i), 
@@ -124,7 +126,18 @@ export default function MapPage() {
             // 마커와 검색결과 항목에 mouseover 했을때
             // 해당 장소에 인포윈도우에 장소명을 표시합니다
             // mouseout 했을 때는 인포윈도우를 닫습니다
-            (function(marker, title) {
+
+            (function (marker, title, place) {
+                kakao.maps.event.addListener(marker, 'click', function () {
+                    displayInfowindow(marker, title, place);
+                });
+    
+                itemEl.onclick = function () {
+                    displayInfowindow(marker, title, place);
+                };
+            })(marker, places[i].place_name, places[i]);
+
+            /*(function(marker, title) {
                 kakao.maps.event.addListener(marker, 'mouseover', function() {
                     displayInfowindow(marker, title);
                 });
@@ -138,9 +151,11 @@ export default function MapPage() {
                 };
     
                 itemEl.onmouseout =  function () {
-                    infowindow.close();
+                    if (infowindow) {
+                        infowindow.close();
+                    }
                 };
-            })(marker, places[i].place_name);
+            })(marker, places[i].place_name);*/
     
             fragment.appendChild(itemEl);
         }
@@ -150,7 +165,9 @@ export default function MapPage() {
         menuEl.scrollTop = 0;
     
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-        map.setBounds(bounds);
+        if (map) {
+            map.setBounds(bounds);
+        }
     }
 
     const getListItem = (index, places) => {
@@ -178,30 +195,29 @@ export default function MapPage() {
 
     const addMarker = (position, idx, title) => {
         let imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-            imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
-            imgOptions =  {
-                spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
-                spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-                offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+            imageSize = new window.kakao.maps.Size(36, 37),  // 마커 이미지의 크기
+            imgOptions = {
+                spriteSize: new window.kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+                spriteOrigin: new window.kakao.maps.Point(0, (idx * 46) + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+                offset: new window.kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
             },
-            markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
-                marker = new kakao.maps.Marker({
-                position: position, // 마커의 위치
-                image: markerImage 
-            });
+        markerImage = new window.kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+        marker = new window.kakao.maps.Marker({
+            position: position, // 마커의 위치
+            image: markerImage
+        });
     
         marker.setMap(map); // 지도 위에 마커를 표출합니다
-        markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+        setMarkers(prevMarkers => [...prevMarkers, marker]);  // 배열에 생성된 마커를 추가합니다
     
         return marker;
-    }
+      };
 
     const removeMarker = () => {
-        for (let i = 0; i < markers.length; i++ ) {
-            markers[i].setMap(null);
-        }   
-        markers = [];
-    }
+        // 이전에 생성된 마커들 제거
+        markers.forEach(marker => marker.setMap(null));
+        setMarkers([]); // 배열 초기화
+    };
 
     const displayPagination = (pagination) => {
         let paginationEl = document.getElementById('pagination'),
@@ -237,8 +253,10 @@ export default function MapPage() {
 
         let content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
     
-        infowindow.setContent(content);
-        infowindow.open(map, marker);
+        if (infowindow) {
+            infowindow.setContent(content);
+            infowindow.open(map, marker);
+        }
     }
 
     const removeAllChildNods = (el) => {   
@@ -246,7 +264,7 @@ export default function MapPage() {
             el.removeChild (el.lastChild);
         }
     }
-
+    
     // -------------------------------------------------------
 
     const onClickMoveToMypage = () => {

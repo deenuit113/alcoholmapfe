@@ -15,7 +15,7 @@ export default function MapUI(props) {
                     <S.MapMain id="map"></S.MapMain>
                     <S.MenuWrap id="menu_wrap" className="bg_white">
                         <S.SearchWrapper>
-                        <S.Form onSubmit={() => props.searchPlaces}>
+                        <S.Form onSubmit={props.searchPlaces}>
                             키워드 : 
                             <S.InputKeyword type="text" value={props.keyword} id="keyword" size="15" onChange={props.onChangeKeyword}/>
                             <S.SearchButton type="submit">검색하기</S.SearchButton>

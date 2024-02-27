@@ -121,13 +121,13 @@ export const MenuWrap = styled.div`
     top: 0;
     left: 0;
     bottom: 0;
-    width: 250px;
+    width: 400px;
     margin: 10px 0 30px 10px;
     padding: 5px;
     overflow-y: auto;
     background: rgba(255, 255, 255, 0.7);
     z-index: 1;
-    font-size: 12px;
+    font-size: 18px;
     border-radius: 10px;
 
     .bg_white{
