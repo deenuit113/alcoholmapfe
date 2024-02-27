@@ -62,9 +62,9 @@ export default function MapPage() {
     
 
 // 키워드 검색을 요청하는 함수입니다
-    const searchPlaces = () => {
+    const searchPlaces = (event) => {
         const keyword = document.getElementById('keyword').value;
-
+        event.preventDefault(); 
         if (!keyword.replace(/^\s+|\s+$/g, '')) {
             alert('키워드를 입력해주세요!');
             return false;
