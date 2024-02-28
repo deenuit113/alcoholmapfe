@@ -51,13 +51,14 @@ export default function MapPage() {
                 const newPs = new window.kakao.maps.services.Places();
                 setPs(newPs);
     
-                const newInfowindow = new window.kakao.maps.InfoWindow({
-                    map: newMap,
-                    position: options.center,
-                    content: '',
-                });
+                if (!infowindow) {
+                    const newInfowindow = new window.kakao.maps.InfoWindow({
+                        map: newMap,
+                        position: options.center,
+                        content: '',
+                    });
                 setInfowindow(newInfowindow);
-
+                }
                 kakao.maps.event.addListener(newMap, 'dragend', handleMapDragEnd);
                 handleMapDragEnd();
                 
@@ -212,7 +213,9 @@ export default function MapPage() {
                 });
     
                 kakao.maps.event.addListener(marker, 'mouseout', function() {
-                    infowindow.close();
+                    if (infowindow) {
+                        infowindow.close();
+                    }
                 });
     
                 itemEl.onmouseover =  function () {
