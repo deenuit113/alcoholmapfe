@@ -42,9 +42,7 @@ export default function MapPage() {
         };
         document.head.appendChild(script);
     
-        // Cleanup function to remove the script element when the component unmounts
         return () => {
-            //document.head.removeChild(script);
         };
     }, [ps]);
 
@@ -120,11 +118,6 @@ export default function MapPage() {
                     location: new window.kakao.maps.LatLng(latitude, longitude),
                     //level = level,
                 });
-        
-                // 검색 결과를 목록에 표시
-                if (result && result.length > 0) {
-                    displayPlaces(result);
-                }
             } else{
                 //console.error('Error handling map drag end: ps is null')
             }
@@ -172,24 +165,16 @@ export default function MapPage() {
     const placesSearchCB = (data, status, pagination) => {
 
         if (status === kakao.maps.services.Status.OK) {
-    
-            // 정상적으로 검색이 완료됐으면
-            // 검색 목록과 마커를 표출합니다
+            // 정상적으로 검색이 완료됐으면 검색 목록과 마커를 표출합니다
             displayPlaces(data);
-    
             // 페이지 번호를 표출합니다
             displayPagination(pagination);
-    
         } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-    
             alert('검색 결과가 존재하지 않습니다.');
             return;
-    
         } else if (status === kakao.maps.services.Status.ERROR) {
-    
             alert('검색 결과 중 오류가 발생했습니다.');
             return;
-    
         }
     }
 
