@@ -37,7 +37,7 @@ export default function MyPagePage(){
             console.error("Token not found in local storage");
             setLoggedIn(false);
             alert("로그인 후 이용해주세요")
-            router.push('../login');
+            //router.push('../login');
             return;
         }
 
