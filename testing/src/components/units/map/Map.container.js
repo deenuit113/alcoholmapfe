@@ -26,7 +26,12 @@ export default function MapPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [radius, setRadius] = useState(0);
     const [review, setReview] = useState("")
-
+    const [isLoggedIn, setLoggedIn] = useState(false);
+    const [testtoken, setToken] = useState(false);
+    
+    useEffect(() => {
+        checkIsLoggedIn();
+    }, []);
 
     useEffect(() => {
         const script = document.createElement("script");
@@ -47,6 +52,26 @@ export default function MapPage() {
     }, [ps]);
 
     // ----------------------------------------------
+
+    const checkIsLoggedIn = async () => { //로그인 확인 함수
+        // 로컬 스토리지에서 토큰 가져오기
+        const token = localStorage.getItem("your_token_key_here");
+
+        // 토큰이 없으면 처리
+        if (!token) {
+            console.error("Token not found in local storage");
+            setLoggedIn(true);
+            return;
+        }
+
+        // API 요청 헤더에 토큰 추가
+        /*const headers = {
+            Authorization: `Bearer ${token}`,
+            Content-Type: 'application/json',
+            // 다른 헤더도 필요한 경우 추가
+        };*/
+        setLoggedIn(true);
+    };
 
     const fetchData = async () => {
         try {
@@ -395,6 +420,7 @@ export default function MapPage() {
             closeModal={closeModal}
             onClickSubmitReview={onClickSubmitReview}
             onClickWish={onClickWish}
+            isLoggedIn={isLoggedIn}
         />
     );
         
@@ -428,6 +454,9 @@ export default function MapPage() {
             setKwError("")
         }
     }
+    const onClickLogout = (event) => {
+        setLoggedIn(false)
+    }
 
     // 별점 평점 -------
 
@@ -438,6 +467,8 @@ export default function MapPage() {
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
                 style={modalStyles}
+                isLoggedIn = {isLoggedIn}
+                onClickSubmitReview = {onClickSubmitReview}
             >
                 {modalContent && [modalContent]}
             </Modal>
@@ -452,6 +483,8 @@ export default function MapPage() {
                 keyword = {keyword}
                 radius = {radius}
                 searchPlaces = {searchPlaces}
+                isLoggedIn = {isLoggedIn}
+                onClickLogout = {onClickLogout}
             />
         </>
         
