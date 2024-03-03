@@ -30,7 +30,7 @@ export default function SignupPage(){
         const { name, value } = event.target;
         setFormData({
             ...formData,
-            [name]: value,
+            [name]: name === 'capaSoju' ? Number(value) : value,
         });
         if(name === "email" && event.target.value !== ""){
             setEmailError("")
@@ -63,15 +63,19 @@ export default function SignupPage(){
         
         if(errorcode === 0){
             console.log(formData)
+            handleFormSubmit(null, formData)
         }
         
     };
 
     const handleFormSubmit = async (e, formData) => {
-        e.preventDefault();
         const jsonformData = JSON.stringify(formData);
         try {
-            const response = await axios.post(apiUrl, jsonformData);
+            const response = await axios.post(apiUrl, jsonformData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
             console.log('Response from server:', response.data);
         } catch (error){
             console.error('error submitting data:', error);
