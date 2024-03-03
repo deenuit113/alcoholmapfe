@@ -465,10 +465,7 @@ export default function MapPage() {
         <>
             <Modal
                 isOpen={isModalOpen}
-                onRequestClose={closeModal}
                 style={modalStyles}
-                isLoggedIn = {isLoggedIn}
-                onClickSubmitReview = {onClickSubmitReview}
             >
                 {modalContent && [modalContent]}
             </Modal>

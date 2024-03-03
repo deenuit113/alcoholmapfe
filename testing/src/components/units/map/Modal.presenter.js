@@ -15,7 +15,7 @@ const ModalPresenter = (props) => {
                         <S.divInfo>주소: {props.selectedPlace.address_name}</S.divInfo>
                         <S.divInfo>카테고리: {props.selectedPlace.category_group_name}</S.divInfo>
                         <S.divInfo>전화번호: {props.selectedPlace.phone}</S.divInfo>
-                        <S.divInfo>장소 URL: <S.placeLink href={props.selectedPlace.place_url}>정보 확인</S.placeLink></S.divInfo>
+                        <S.divInfo>장소 URL: <S.placeLink href={props.selectedPlace.place_url}  target='_blank'>정보 확인</S.placeLink></S.divInfo>
                         {props.isLoggedIn ? (
                             <>
                                 리뷰: <S.reviewInput type="text" placeholder="리뷰를 입력하세요" value={props.review} onChange={props.onReviewChange} />
