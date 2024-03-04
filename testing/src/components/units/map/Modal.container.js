@@ -27,14 +27,15 @@ const ModalContainer = (props) => {
         const token = localStorage.getItem('jwtToken');
         const decodedToken = jwt.decode(token);
 
-            // decode된 토큰에서 사용자 이메일 추출
+        // decode된 토큰에서 사용자 이메일 추출
         const userEmail = decodedToken.email;
         return userEmail;
     }
 
     const onChangeReviewForm = (event) => {
         const { name, value } = event.target;
-        const email = extractEmailfromToken();
+        //const email = extractEmailfromToken();
+        const email = "kimtax0@gmail.com"
         setReviewForm({
             ...reviewForm,
             userEmail: email,
