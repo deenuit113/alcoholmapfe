@@ -69,7 +69,7 @@ const ModalContainer = (props) => {
     };
 
     const onClickWishList = () => {
-        toast("찜했슴다!")
+        alert("찜했슴다!")
     }
 
     const submitReviewForm = async (e, formData) => {
