@@ -4,7 +4,7 @@ import { FaStar } from 'react-icons/fa';
 
 const ModalPresenter = (props) => {
     return (
-        <S.modalContainer>  {/* 모달 스타일을 적용합니다 */}
+        <S.modalContainer ref={props.modalRef}>  {/* 모달 스타일을 적용합니다 */}
             {props.selectedPlace && (
                 <>
                     <S.closeButton onClick={props.closeModal}>X</S.closeButton>

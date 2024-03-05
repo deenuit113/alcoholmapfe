@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import ModalPresenter from './Modal.presenter';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
@@ -15,6 +15,7 @@ const ModalContainer = (props) => {
         content: '',
         starRate: 0,
     });
+    const modalRef = useRef();
 
     useEffect(() => {
         console.log(props.selectedPlace)
@@ -22,6 +23,10 @@ const ModalContainer = (props) => {
             ...reviewForm,
             placeId: props.selectedPlace.id,
         })
+        document.addEventListener('mousedown', onClickCloseModal);
+        return () => {
+            document.removeEventListener('mousedown', onClickCloseModal);
+        }
     },[]);
 
     /*const extractEmailfromToken = () => {
@@ -72,6 +77,12 @@ const ModalContainer = (props) => {
         alert("찜했슴다!")
     }
 
+    const onClickCloseModal = (e) => {
+        if (modalRef.current && !modalRef.current.contains(e.target) && e.target !== modalRef.current) {
+            props.closeModal();
+        }
+    };
+
     const submitReviewForm = async (e, formData) => {
         const token = localStorage.getItem('jwtToken');
         const jsonformData = JSON.stringify(formData);
@@ -97,9 +108,11 @@ const ModalContainer = (props) => {
             rvError = {rvError}
             starError = {starError}
             stars = {stars}
+            modalRef = {modalRef}
             onChangeReviewForm = {onChangeReviewForm}
             onClickReviewFormCheck = {onClickReviewFormCheck}
             onClickWishList = {onClickWishList}
+            onClickCloseModal = {onClickCloseModal}
         />
     );
 };
