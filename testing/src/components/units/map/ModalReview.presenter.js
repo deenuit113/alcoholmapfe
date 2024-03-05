@@ -6,10 +6,9 @@ const ModalReviewUI = (props) => {
         <S.ReviewDataWrapper id = "ReviewDataWrapper">
             <S.ReviewListUl>
                 {props.data.map((item, index) => (
-                    <li key={index}>
-                        <div>UserId: {item.userId}</div>
-                        <div>Review: {item.review}</div>
-                    </li>
+                    <S.Reviewinfo key={index}>
+                        <div>{item.userId}: {item.review}</div>
+                    </S.Reviewinfo>
                 ))}
             </S.ReviewListUl>
             {props.loading && <div>Loading...</div>}

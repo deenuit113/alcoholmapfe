@@ -23,7 +23,6 @@ const ModalContainer = (props) => {
     },[isReviewed]);
 
     useEffect(() => {
-        console.log(props.selectedPlace)
         setReviewForm({
             ...reviewForm,
             placeId: props.selectedPlace.id,
@@ -71,7 +70,6 @@ const ModalContainer = (props) => {
         }
         
         if(errorcode === 0){
-            console.log(props.selectedPlace)
             submitReviewForm(null,reviewForm)
         }
         

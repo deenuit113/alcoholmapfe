@@ -10,3 +10,8 @@ export const ReviewListUl = styled.ul`
     height: auto;
     min-height: 100%;
 `
+
+export const Reviewinfo = styled.li`
+    margin-top: 2px;
+    font-size: 20px;
+`
