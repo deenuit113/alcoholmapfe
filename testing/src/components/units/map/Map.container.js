@@ -282,7 +282,7 @@ export default function MapPage() {
     const getListItem = (index, places) => {
 
         const el = document.createElement('li'),
-        itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
+        itemStr = '<span class="markerbg marker_' + (index+1) + '" style = "resize:horizontal;"></span>' +
                     '<div class="info">' +
                     '   <h5>' + places.place_name + '</h5>';
     

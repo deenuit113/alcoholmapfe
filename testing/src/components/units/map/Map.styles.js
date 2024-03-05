@@ -145,10 +145,13 @@ export const MenuWrap = styled.div`
     margin: 10px 0 30px 10px;
     padding: 5px;
     overflow-y: auto;
+    overflow-x: hidden;
     background: rgba(255, 255, 255, 0.7);
     z-index: 1;
     font-size: 18px;
     border-radius: 10px;
+    resize: horizontal;
+    width: 450px;
 
     .bg_white{
         background: #fff;
