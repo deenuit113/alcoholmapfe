@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { FaStar } from 'react-icons/fa';
 
 const modalStyles = {
     overlay: {
@@ -94,4 +95,27 @@ export const wishListButton = styled.button`
     }
 `
 
+export const ErrorMsgWrapper = styled.div`
+    width: 300px;
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2px;
+    color: red;
+`
+
+export const starRateWrapper = styled.div`
+    width: 300px;
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 2px;
+`
+
+export const starRate = styled(FaStar)`
+    cursor: pointer;
+    box-sizing: content-box;
+    padding: 4px;
+    font-size: 20px;
+`
 export default modalStyles;
