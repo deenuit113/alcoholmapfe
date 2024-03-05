@@ -37,7 +37,7 @@ export const modalContainer = styled.div`
 
 export const modalContent = styled.div`
     position: relative;
-    width: 500px;
+    width: 450px;
     height: 250px;
     flex-direction: column;
 `
