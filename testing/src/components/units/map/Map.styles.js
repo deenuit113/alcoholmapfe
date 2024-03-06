@@ -11,10 +11,12 @@ export const Wrapper = styled.div`
     padding-right: 102px;
     display: flex;
     flex-direction: column;
-    align-items: ;
+    align-items: center;
     justify-content: flex-start;
-    border: none;
+    border: 1px solid gray;
+    border-radius: 30px;
     box-shadow: 0px 0px 10px gray;
+    background-color: #B7F0B1;
 `;
 
 export const AMHeader = styled.header`
@@ -41,48 +43,56 @@ export const footer = styled.footer`
 
 export const LoginButton = styled.button`
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
     width: 100px;
     float: right;
     margin-left: 10px;
-    border-radius: 3px 3px 3px 3px;
+    background-color: #B7F0B1;
+    border: 5px solid #47C83E;
+    border-radius: 8px;
 `
 
 export const LogoutButton = styled.button`
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
-    width: 100px;
+    width: 120px;
     float: right;
     margin-left: 10px;
-    border-radius: 3px 3px 3px 3px;
+    background-color: #B7F0B1;
+    border: 5px solid #47C83E;
+    border-radius: 8px;
 `
 
 export const SignupButton = styled.button`
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
     width: 100px;
     float: right;
     margin-left: 10px;
-    border-radius: 3px 3px 3px 3px;
+    background-color: #B7F0B1;
+    border: 5px solid #47C83E;
+    border-radius: 8px;
 `
 
 export const MypageButton = styled.button`
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
-    width: 100px;
+    width: 130px;
     float: right;
     margin-left: 10px;
-    border-radius: 3px 3px 3px 3px;
+    background-color: #B7F0B1;
+    border: 5px solid #47C83E;
+    border-radius: 8px;
 `
 
 export const SearchWrapper = styled.div`
     width: 500px;
     display: flex;
-    align-contents: space-evenly;
+    align-contents: center;
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 20px;
@@ -124,7 +134,9 @@ export const MapMain = styled.main`
     height: 650px;
     position: relative;
     overflow: hidden;
-    border: 1px solid black;
+    border: 20px solid #47C83E;
+    margin-right: 10px;
+    border-radius: 30px;
 `
 
 // -----------------
