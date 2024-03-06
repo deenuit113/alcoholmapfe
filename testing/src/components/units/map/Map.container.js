@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import MapUI from './Map.presenter';
 import _debounce from 'lodash/debounce'
-
 import Modal from 'react-modal';
 import ModalContainer from './Modal.container';
 import modalStyles from './Modal.styles'; 
@@ -280,10 +279,9 @@ export default function MapPage() {
     }
 
     const getListItem = (index, places) => {
-
         const el = document.createElement('li'),
-        itemStr = '<span style ="font-size:23px;font-weight:bolder;float:right;color:green;">' + '평점 ' + (index+1) + '</span>' +
-            '<div style="font-size: 25px; font-weight:bold;margin-bottom:10px;">' + places.place_name + '</div>';
+        itemStr = ('<span style ="float:right">' + '<img src ="/soju1.png"/>' + '</span>').repeat(5);
+        itemStr += '<div style="font-size: 25px; font-weight:bold;margin-bottom:10px;">' + places.place_name + '</div>';
     
         if (places.road_address_name) {
             itemStr += '<span>' + places.road_address_name + '</span>' +

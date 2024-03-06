@@ -21,8 +21,8 @@ export const AMHeader = styled.header`
     
 `
 
-export const AMTitle = styled.h1`
-    cursor:pointer;
+export const AMTitle = styled.img`
+    cursor: pointer
 ` 
 
 export const MapNav = styled.nav`
