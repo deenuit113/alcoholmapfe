@@ -81,29 +81,32 @@ export const MypageButton = styled.button`
 
 export const SearchWrapper = styled.div`
     width: 500px;
-    display: inline-block;
-    flex-direction: column;
-    align-items: center;
+    display: flex;
+    align-contents: space-evenly;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
 `
 
 export const SearchButton = styled.button`
     margin-left:5px;
     width: 100px;
+    font-size: 20px;
 `
 
 export const InputKeyword = styled.input`
     width: 150px;
     height: 20px;
-    font-size: 15px;
-    margin-top: 15px;
+    font-size: 20px;
+    margin-top: 0px;
 `
 
 export const InputRadius = styled.input`
     width: 50px;
     height: 20px;
-    font-size: 15px;
-    margin-top: 15px;
-    margin-bottom: 5px;
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
     margin-left: 10px;
 `
 
@@ -167,7 +170,8 @@ export const Option = styled.div`
     text-align: center;
 `;
 
-export const Form = styled.form``;
+export const Form = styled.form`
+`;
 
 export const KeywordInput = styled.input`
     width: 200px;
