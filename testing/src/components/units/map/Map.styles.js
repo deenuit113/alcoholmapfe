@@ -99,6 +99,7 @@ export const InputKeyword = styled.input`
     height: 20px;
     font-size: 20px;
     margin-top: 0px;
+    margin-left: 5px;
 `
 
 export const InputRadius = styled.input`
@@ -108,6 +109,7 @@ export const InputRadius = styled.input`
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: 10px;
+    margin-right: 3px;
 `
 
 export const MapWrapper = styled.div`
@@ -171,13 +173,8 @@ export const Option = styled.div`
 `;
 
 export const Form = styled.form`
-`;
-
-export const KeywordInput = styled.input`
-    width: 200px;
-    height: 20px;
-    font-size: 15px;
-    margin-top: 15px;
+    display: flex;
+    align-items: center;
 `;
 
 export const PlacesList = styled.ul`
