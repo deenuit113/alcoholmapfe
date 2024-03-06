@@ -141,16 +141,16 @@ export const MenuWrap = styled.div`
     top: 0;
     left: 0;
     bottom: 0;
-    width: 400px;
-    margin: 10px 0 30px 10px;
+    width: 450px;
+    margin: 10px 0 10px 10px;
     padding: 5px;
+    padding-right: 30px;
     overflow-y: auto;
     overflow-x: hidden;
     background: rgba(255, 255, 255, 0.7);
     z-index: 1;
     font-size: 18px;
     border-radius: 10px;
-    resize: horizontal;
     width: 450px;
 
     .bg_white{
@@ -178,112 +178,6 @@ export const KeywordInput = styled.input`
 
 export const PlacesList = styled.ul`
     list-style: none;
-`;
-
-export const PlacesListItem = styled.li`
-    position: relative;
-    border-bottom: 1px solid #888;
-    overflow: hidden;
-    cursor: pointer;
-    min-height: 65px;
-
-    span {
-        display: block;
-        margin-top: 4px;
-    }
-
-    h5,
-    .info {
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-    }
-
-    .info {
-        padding: 10px 0 10px 55px;
-
-        .gray {
-            color: #8a8a8a;
-        }
-
-        .jibun {
-            padding-left: 26px;
-            background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;
-        }
-
-        .tel {
-            color: #009900;
-        }
-    }
-
-    .markerbg {
-        float: left;
-        position: absolute;
-        width: 36px;
-        height: 37px;
-        margin: 10px 0 0 10px;
-        background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;
-    }
-
-    .marker_1 {
-        background-position: 0 -10px;
-    }
-
-    .marker_2 {
-        background-position: 0 -56px;
-    }
-
-    .marker_3 {
-        background-position: 0 -102px;
-    }
-
-    .marker_4 {
-        background-position: 0 -148px;
-    }
-
-    .marker_5 {
-        background-position: 0 -194px;
-    }
-
-    .marker_6 {
-        background-position: 0 -240px;
-    }
-
-    .marker_7 {
-        background-position: 0 -286px;
-    }
-
-    .marker_8 {
-        background-position: 0 -332px;
-    }
-
-    .marker_9 {
-        background-position: 0 -378px;
-    }
-
-    .marker_10 {
-        background-position: 0 -423px;
-    }
-
-    .marker_11 {
-        background-position: 0 -470px;
-    }
-
-    .marker_12 {
-        background-position: 0 -516px;
-    }
-
-    .marker_13 {
-        background-position: 0 -562px;
-    }
-
-    .marker_14 {
-        background-position: 0 -608px;
-    }
-
-    .marker_15 {
-        background-position: 0 -654px;
-    }
 `;
 
 export const Pagination = styled.div`

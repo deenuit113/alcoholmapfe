@@ -282,20 +282,21 @@ export default function MapPage() {
     const getListItem = (index, places) => {
 
         const el = document.createElement('li'),
-        itemStr = '<span class="markerbg marker_' + (index+1) + '" style = "resize:horizontal;"></span>' +
-                    '<div class="info">' +
-                    '   <h5>' + places.place_name + '</h5>';
+        itemStr = '<span style ="font-size:23px;font-weight:bolder;float:right;color:green;">' + '평점 ' + (index+1) + '</span>' +
+            '<div style="font-size: 25px; font-weight:bold;margin-bottom:10px;">' + places.place_name + '</div>';
     
         if (places.road_address_name) {
-            itemStr += '    <span>' + places.road_address_name + '</span>' +
-                        '   <span class="jibun gray">' +  places.address_name  + '</span>';
+            itemStr += '<span>' + places.road_address_name + '</span>' +
+                        '<span style="overflow:hidden">' + places.address_name + '</span>' + '<br/>';
         } else {
-            itemStr += '    <span>' +  places.address_name  + '</span>'; 
+            itemStr += '<span>' + places.address_name + '</span>' + '<br/>'; 
         }
-                     
-          itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-                    '</div>';           
-    
+        if (places.phone){
+            itemStr += '<span class="tel">' + '☎ ' + places.phone + '</span>' + '<hr/>'+'</div>';     
+        } else {
+            itemStr += '<hr/>';
+        }
+                
         el.innerHTML = itemStr;
         el.className = 'item';
     
