@@ -113,12 +113,12 @@ export default function SignupPage(){
         
         if(errorcode === 0){
             console.log(signupForm)
-            handleFormSubmit(signupForm)
+            submitSignupForm(signupForm)
         }
         
     };
 
-    const handleFormSubmit = async (signupForm: SignupForm) => {
+    const submitSignupForm = async (signupForm: SignupForm) => {
         const jsonSignupForm = JSON.stringify(signupForm);
         console.log(jsonSignupForm)
         try {
@@ -175,8 +175,8 @@ export default function SignupPage(){
             capaError = {capaError}
             onClickSubmit = {onClickSubmit}
             onChangeInput = {onChangeInput}
-            formData = {signupForm}
-            handleFormSubmit = {handleFormSubmit}
+            signupForm = {signupForm}
+            submitSignupForm = {submitSignupForm}
             onClickMoveToMainpage = {onClickMoveToMainpage}
         />
     )
