@@ -8,7 +8,7 @@ export interface userData {
 }
 
 // Mypage presenter interface
-export interface  MypageUIProps {
+export interface MypageUIProps {
     isEdit: boolean;
     userData: {
         userEmail: string;
