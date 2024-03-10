@@ -12,18 +12,16 @@ import { LoginForm } from './Login.types';
 const apiUrl = '/users/login';
 
 export default function LoginPage(): JSX.Element{
-    //const [disabledbutton, setButton] = useState(true) //버튼 비활성화 추후 추가
+    const router = useRouter()
+
     const [loginForm, setLoginForm] = useState<LoginForm>({
         email: '',
         password: '',
     });
     const [jwtToken, setJwtToken] = useState("");
-
     const [emailError, setEmailError] = useState("")
     const [pwError, setPwError] = useState("")
-    
-    const router = useRouter()
-
+    //const [disabledbutton, setButton] = useState(true) //버튼 비활성화 추후 추가
 
     //-----------중복 (추후 Custom Hook)-------------
 
