@@ -127,11 +127,6 @@ export default function MapPage(): JSX.Element{
 
     const handleMapDragEnd = _debounce(async () => {
         try {
-            // ps가 초기화되지 않았을 때의 처리
-            if (!ps || !map) {
-                const newPs = new window.kakao.maps.services.Places();
-                setPs(newPs);
-            }
             if (ps && map){ // 맵의 중심 좌표를 가져와서 검색 수행
                  //@ts-ignore // kakao api 함수
                 const center = map.getCenter();
