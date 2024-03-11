@@ -284,11 +284,10 @@ export default function MapPage(): JSX.Element{
     const getListItem = (index: number, places: any): any => {
         const el: HTMLElement = document.createElement('li');
         let itemStr : string = (`<span style ="float:right"><img src ="/soju1.png"/></span>`).repeat(5);
-        itemStr += `<div style="font-size: 25px; font-weight:bold;margin-bottom:10px;">${places.place_name}</div>`;
+        itemStr += `<div>${places.place_name}</div>`;
     
         if (places.road_address_name) {
-            itemStr += `<span>${places.road_address_name}</span>
-                        <span style="overflow:hidden">${places.address_name}</span><br/>`;
+            itemStr += `<span>${places.road_address_name}</span><br/>`;
         } else {
             itemStr += `<span>${places.address_name}</span><br/>`; 
         }

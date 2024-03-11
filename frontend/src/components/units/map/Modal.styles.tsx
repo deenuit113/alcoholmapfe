@@ -7,8 +7,8 @@ const modalStyles = {
         zIndex: 990,
     },
     content: {
-        width: 500,
-        height: 600,
+        width: 550,
+        height: 650,
         top: '50%',
         left: '50%',
         right: '0',
@@ -40,6 +40,7 @@ export const modalContent = styled.div`
     position: relative;
     width: 450px;
     height: 400px;
+    display: flex;
     flex-direction: column;
 `
 
@@ -138,7 +139,7 @@ export const placeinfoWrapper = styled.div`
 `
 
 export const reviewWrapper = styled.div`
-    padding-top: 3px;
+    padding-top: 20px;
     display: inline-block;
     flex-direction: column;
     align-items: center;
@@ -154,12 +155,19 @@ export const reviewerWrapper = styled.div`
     border: 1px solid black;
     border-radius: 10px;
     padding: 5px;
+    margin-top: 10px;
     width: 400px;
     height: 265px;
-    display: inline-block;
+    display: flex;
     flex-direction: column;
     align-items: center;
     overflow: auto;
+    overflow-x: hidden;
+`
+export const CenterWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 export default modalStyles;
