@@ -292,7 +292,7 @@ export default function MapPage(): JSX.Element{
             itemStr += `<span>${places.address_name}</span><br/>`; 
         }
         if (places.phone){
-            itemStr += `<span class="tel">☎ ${places.phone}</span><hr/></div>`;     
+            itemStr += `<span class="tel">☎ ${places.phone}</span><hr/>`;     
         } else {
             itemStr += '<hr/>';
         }

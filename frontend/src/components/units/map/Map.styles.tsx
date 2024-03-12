@@ -169,8 +169,8 @@ export const ToggleButton1 = styled.button`
 
 export const ToggleButton2 = styled.button`
     position: fixed;
-    height: 360px;
-    top: 70;
+    height: 33%;
+    top: 33%;
     left: 0;
     font-size: 100%;
     background-color: #4caf50;
