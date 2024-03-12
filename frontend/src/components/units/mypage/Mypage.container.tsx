@@ -37,9 +37,9 @@ export default function MyPagePage(){
                 capaSoju: 3,
                 nickname: "kimtax0",
             });
-            //router.push('../login');
+            router.push('../login');
         } else{
-            //fetchData();
+            fetchData();
         }
 
     }, []);
@@ -56,7 +56,7 @@ export default function MyPagePage(){
             // API 호출
             const response = await axios.get(apiUrl, {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+                    Authorization: `Bearer ${token}}`,
                 },
                 params: {
                     email: userEmail,
