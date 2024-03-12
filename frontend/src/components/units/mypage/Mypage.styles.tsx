@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
     border: 1px solid gray;
     border-radius: 30px;
     box-shadow: 0px 0px 10px gray;
-    background-color: #b7f0b1;
+    background-color: #f0fdef;
     overflow-y: visible;
 
     @media all and (min-width: 480px) and (max-width: 1439px) {
@@ -88,7 +88,7 @@ export const Logo = styled.img`
 `
 
 export const UserInfoWrapper = styled.div`
-    width: 50%;
+    width: 80%;
     height: 100%;
     display: inline-block;
     flex-direction: column;
@@ -103,7 +103,7 @@ export const UserInfoWrapper = styled.div`
 `
 
 export const WishListWrapper = styled.div`
-    width: 50%;
+    width: 80%;
     display: inline-block;
     flex-direction: column;
     align-items: center;
@@ -116,7 +116,7 @@ export const WishListWrapper = styled.div`
 `
 
 export const RatedListWrapper = styled.div`
-    width: 50%;
+    width: 80%;
     display: inline-block;
     flex-direction: column;
     align-items: center;
@@ -129,7 +129,7 @@ export const RatedListWrapper = styled.div`
 `
 
 export const ButtonWrapper = styled.div`
-    width: 20%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;

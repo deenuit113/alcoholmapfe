@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
     border: 1px solid gray;
     border-radius: 30px;
     box-shadow: 0px 0px 10px gray;
-    background-color: #b7f0b1;
+    background-color: #f0fdef;
 
     /* Style for the container that will hold the custom scrollbar */
     &::before {
@@ -169,8 +169,8 @@ export const ToggleButton1 = styled.button`
 
 export const ToggleButton2 = styled.button`
     position: fixed;
-    height: 350px;
-    top: 60;
+    height: 360px;
+    top: 70;
     left: 0;
     font-size: 100%;
     background-color: #4caf50;
@@ -283,6 +283,7 @@ export const MenuWrap = styled.div`
     background: rgba(255, 255, 255, 0.7);
     z-index: 1;
     font-size: 18px;
+    border: 5px solid #b7f0b1;
     border-radius: 10px;
 
     div {

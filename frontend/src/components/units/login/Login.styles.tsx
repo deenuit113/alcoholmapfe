@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
     border: 1px solid gray;
     border-radius: 30px;
     box-shadow: 0px 0px 10px gray;
-    background-color: #b7f0b1;
+    background-color: #f0fdef;
 
     @media all and (min-width: 480px) and (max-width: 1439px) {
         // 태블릿

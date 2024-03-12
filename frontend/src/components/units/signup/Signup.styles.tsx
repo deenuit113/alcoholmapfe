@@ -17,8 +17,7 @@ export const Wrapper = styled.div`
     border: 1px solid gray;
     border-radius: 30px;
     box-shadow: 0px 0px 10px gray;
-    background-color: #b7f0b1;
-    overflow-y: visible;
+    background-color: #f0fdef;
 
     @media all and (min-width: 480px) and (max-width: 1439px) {
         // 모바일 세로
@@ -65,13 +64,14 @@ export const Title = styled.div`
   padding-bottom: 15px;
 `;
 
-export const Logo = styled.div`
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 50px;
-  font-weight: bold;
-  padding-bottom: 15px;
-  cursor: pointer;
-`;
+export const Logo = styled.img`
+    cursor: pointer;
+
+    @media all and (min-width: 480px) and (max-width: 1439px) {
+        // 태블릿
+        width: 40%;
+    }
+`
 
 export const ButtonWrapper = styled.div`
   text-align: center;
