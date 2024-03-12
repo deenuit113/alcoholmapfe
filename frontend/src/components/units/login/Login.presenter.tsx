@@ -1,6 +1,8 @@
+import { loginSchema } from "../../../commons/yupSchemas";
 import * as S from "./Login.styles";
 import { LoginUIProps } from "./Login.types";
-import { UseFormReturn } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+
 
 export default function LoginUI({ formMethods, onSubmit, ...props }: LoginUIProps): JSX.Element {
     const { register, handleSubmit, formState: { errors } } = formMethods;
@@ -14,13 +16,7 @@ export default function LoginUI({ formMethods, onSubmit, ...props }: LoginUIProp
                         <S.Label>이메일: </S.Label>
                         <S.InputInfo
                             type="text"
-                            {...register('email', {
-                                required: '이메일을 입력하세요.',
-                                pattern: {
-                                value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/,
-                                message: '올바른 이메일 형식이 아닙니다.',
-                                },
-                            })}
+                            {...register('email')}
                         />
                         {errors?.email && <S.ErrorMsgWrapper>{errors.email.message}</S.ErrorMsgWrapper>}
                     </S.InfoWrapper>
@@ -29,9 +25,7 @@ export default function LoginUI({ formMethods, onSubmit, ...props }: LoginUIProp
                         <S.Label>비밀번호: </S.Label>
                         <S.InputInfo
                             type="password"
-                            {...register('password', {
-                            required: '비밀번호를 입력하세요.',
-                            })}
+                            {...register('password')}
                         />
                         {errors?.password && <S.ErrorMsgWrapper>{errors.password.message}</S.ErrorMsgWrapper>}
                     </S.InfoWrapper>

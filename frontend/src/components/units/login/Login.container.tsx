@@ -4,6 +4,8 @@ import LoginUI from './Login.presenter'
 import axios from 'axios';
 import { LoginForm } from './Login.types';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { loginSchema } from "../../../commons/yupSchemas";
 
 /*  백엔드 서버에 이메일, 비밀번호 보내기
     로그인 성공 시 메인페이지 라우터
@@ -15,6 +17,7 @@ export default function LoginPage(): JSX.Element{
 
     const { register, handleSubmit, formState } = useForm<LoginForm>({
         mode: 'onChange',
+        resolver: yupResolver(loginSchema),
         reValidateMode: 'onChange',
         defaultValues: {
           email: '',
