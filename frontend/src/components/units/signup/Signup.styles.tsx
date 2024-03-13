@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 40%;
     transform: translate(-50%, -50%);
     border: 1px solid black;
     margin: 10 10 10 10px;
@@ -35,6 +36,7 @@ export const Label = styled.div`
 `;
 
 export const SignupForm = styled.form`
+    width: 100%;
 `
 
 export const InfoWrapper = styled.div`
@@ -44,7 +46,7 @@ export const InfoWrapper = styled.div`
 `;
 
 export const ErrorMsgWrapper = styled.div`
-  width: 300px;
+  width: 100%;
   display: inline-block;
   flex-direction: column;
   align-items: center;
@@ -86,6 +88,7 @@ export const SignUpButton = styled.button`
     cursor: pointer;
     border-radius: 4px;
 `;
+
 export const InputInfo = styled.input`
     width: 100%;
     padding: 10px;
