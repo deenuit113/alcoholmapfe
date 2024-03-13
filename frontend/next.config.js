@@ -7,7 +7,7 @@ module.exports = {
       },
       {
         source: '/users/profile/:email',
-        destination: `http://localhost:8080/users/profile/:email`,
+        destination: `http://localhost:8080/users/profile/:userEmail`,
       },
       {
         source: '/users/place/review',
