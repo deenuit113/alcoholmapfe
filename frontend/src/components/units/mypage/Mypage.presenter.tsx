@@ -10,9 +10,9 @@ export default function MypageUI(props: MypageUIProps): JSX.Element {
             <S.Logo onClick={props.onClickMoveToMainpage} src="/GreenBottleLogo1.png"></S.Logo>
             <S.Title>마이페이지</S.Title>
             <S.UserInfoWrapper>
-                <S.InfoTitle>이메일</S.InfoTitle>
+                <S.Label>이메일</S.Label>
                 {props.isEdit ? (
-                    <input
+                    <S.UserInfoInput
                         type="text"
                         name="userEmail"
                         value={props.userData.userEmail}
@@ -21,9 +21,9 @@ export default function MypageUI(props: MypageUIProps): JSX.Element {
                 ) : (
                     <S.UserInfo>{props.userData.userEmail}</S.UserInfo>
                 )}
-                <S.InfoTitle>주량</S.InfoTitle>
+                <S.Label>주량</S.Label>
                 {props.isEdit ? (
-                    <input
+                    <S.UserInfoInput
                         type="number"
                         name="capaSoju"
                         value={props.userData.capaSoju}
@@ -32,9 +32,9 @@ export default function MypageUI(props: MypageUIProps): JSX.Element {
                 ) : (
                     <S.UserInfo>{props.userData.capaSoju}</S.UserInfo>
                 )}
-                <S.InfoTitle>닉네임</S.InfoTitle>
+                <S.Label>닉네임</S.Label>
                 {props.isEdit ? (
-                    <input
+                    <S.UserInfoInput
                         type="text"
                         name="nickname"
                         value={props.userData.nickname}

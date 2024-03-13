@@ -31,10 +31,10 @@ export const Wrapper = styled.div`
 `;
 
 export const Label = styled.div`
-      padding-bottom: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      float: left;
+    padding-bottom: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    float: left;
 `;
 
 export const Title = styled.div`
