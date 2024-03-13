@@ -97,8 +97,6 @@ export const UserInfoWrapper = styled.div`
     padding-bottom: 15px;
     padding-left: 5px;
     margin: 5px;
-    border: 1px solid black;
-    border-radius: 10px 10px 10px 10px;
     overflow-y: visible;
 `
 

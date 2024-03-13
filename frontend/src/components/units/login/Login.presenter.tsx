@@ -1,8 +1,5 @@
-import { loginSchema } from "../../../commons/yupSchemas";
 import * as S from "./Login.styles";
 import { LoginUIProps } from "./Login.types";
-import { yupResolver } from '@hookform/resolvers/yup';
-
 
 export default function LoginUI({ formMethods, onSubmit, ...props }: LoginUIProps): JSX.Element {
     const { register, handleSubmit, formState: { errors } } = formMethods;

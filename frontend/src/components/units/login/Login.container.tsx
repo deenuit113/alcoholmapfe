@@ -32,10 +32,10 @@ export default function LoginPage(): JSX.Element{
     const onSubmit: SubmitHandler<LoginForm> = (data: LoginForm) => {
         // 로그인 처리 로직 추가
         console.log(data);
-        onSendtoServer(data);
+        onSendLoginForm(data);
       };
 
-    const onSendtoServer = async (loginForm: LoginForm) => {
+    const onSendLoginForm = async (loginForm: LoginForm) => {
         const loginFormJson = JSON.stringify(loginForm);
         try {
             const response = await axios.post(apiUrl, loginFormJson, {

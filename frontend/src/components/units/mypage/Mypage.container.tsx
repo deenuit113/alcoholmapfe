@@ -37,7 +37,7 @@ export default function MyPagePage(){
                 capaSoju: 3,
                 nickname: "kimtax0",
             });
-            router.push('../login');
+            //router.push('../login');
         } else{
             fetchData();
         }
