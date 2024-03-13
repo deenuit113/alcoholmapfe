@@ -6,11 +6,12 @@ import { LoginForm } from './Login.types';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from "../../../commons/yupSchemas";
+import baseUrl from "../../../commons/baseUrl";
 
 /*  백엔드 서버에 이메일, 비밀번호 보내기
     로그인 성공 시 메인페이지 라우터
 */
-const apiUrl = 'http://localhost:8080/users/login';
+const apiUrl = baseUrl + '/users/login';
 
 export default function LoginPage(): JSX.Element{
     const router = useRouter()
