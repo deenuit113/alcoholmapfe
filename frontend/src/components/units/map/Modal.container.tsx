@@ -3,7 +3,6 @@ import ModalPresenter from './Modal.presenter';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import { IModalProps, ReviewForm } from './Modal.types';
-import baseUrl from "../../../commons/baseUrl";
 
 const apiUrl = '/users/place/review';
 

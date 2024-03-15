@@ -44,7 +44,9 @@ export default function LoginPage(): JSX.Element{
                     'Content-Type': 'application/json',
                 },
             });
-            const token = response.data.token;
+            //const token = response.data.accesstoken;
+            const token = 'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImtpbXRheDBAZ21haWwuY29tIiwicGFzc3dvcmQiOiJraW10YXgwMTIzISJ9.E67z1F14tAT1Yz7DeU6LLlBYXLkzHoP8k7qumkn3DgA';
+            console.log(response.data);
             localStorage.setItem('jwtToken', token);
             router.push("../map"); //로그인 성공 시 메인페이지로 이동
         } catch (error){

@@ -7,7 +7,7 @@ module.exports = {
       },
       {
         source: '/users/profile/:email',
-        destination: `https://fbcc7292-503c-46b5-88a1-add73780962d.mock.pstmn.io/users/profile/:userEmail`,
+        destination: `https://3d0a7f65-235c-4ea0-ac9c-e7c71a3abbea.mock.pstmn.io/users/profile/:userEmail`,
       },
       {
         source: '/users/place/review',
@@ -15,11 +15,11 @@ module.exports = {
       },
       {
         source: '/users/profile',
-        destination: `https://0901bced-93ba-491a-9e8f-8bdd4e98870f.mock.pstmn.io/users/profile`,
+        destination: `https://9834bd63-44b8-4339-b0e3-4dc04a29ae41.mock.pstmn.io/users/profile`,
       },
       {
         source: '/users/login',
-        destination: 'https://fbcc7292-503c-46b5-88a1-add73780962d.mock.pstmn.io/users/login',
+        destination: 'https://5b1b8342-da13-40fb-964d-4ea041ab29cb.mock.pstmn.io/users/login',
       }
     ];
   },
