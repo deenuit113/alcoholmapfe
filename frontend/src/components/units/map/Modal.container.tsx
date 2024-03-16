@@ -103,6 +103,7 @@ const ModalContainer = (props: IModalProps): JSX.Element => {
                 },
             });
             console.log('Response from server:', response.data);
+            alert("리뷰가 등록되었습니다.")
 
             setReviewForm({
                 placeId: 0,

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ModalReviewUI from './ModalReview.presenter';
+import axios from 'axios';
+
+const apiUrl = '/users/place/reviewList';
 
 const ModalReview = (): JSX.Element => {
     const [data, setData] = useState<{ userId: string; review: string; }[]>([]);
@@ -43,7 +46,7 @@ const ModalReview = (): JSX.Element => {
     
     // -------test--------
 
-    const fetchData = async () => {
+    /*const fetchData = async () => {
         setisLoading(true);
         setTimeout(() => {
             //const newData = [...data, ...new Array(10).fill('New Data')];
@@ -52,8 +55,21 @@ const ModalReview = (): JSX.Element => {
             setData(newData);
             setisLoading(false);
         }, 500);
-    };
+    };*/
+
+    // --------------- test -----------------
     
+    const fetchData = async () => {
+        setisLoading(true);
+        try {
+            const response = await axios.get(apiUrl);
+            setData(prevData => [...prevData, ...response.data]);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        } finally {
+            setisLoading(false);
+        }
+    };
     
     return(
         <ModalReviewUI

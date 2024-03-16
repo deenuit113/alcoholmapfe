@@ -15,8 +15,8 @@ import { mypageEditSchema } from "../../../commons/yupSchemas";
     이메일 받아오기
 */
 
-const getUserInfoApiUrl = '/users/profile';
-const editUserInfoApiUrl = '/users/editprofile';
+const getUserInfoApiUrl = '/users/profile/${userEmail}';
+const editUserInfoApiUrl = '/users/profile';
 
 
 export default function MyPagePage(){
@@ -65,16 +65,16 @@ export default function MyPagePage(){
             const decodedToken = jwt.decode(token);
 
             // decode된 토큰에서 사용자 이메일 추출
-            //const userEmail = decodedToken.email;
+            const userEmail = decodedToken.email;
 
             // API 호출
             const response = await axios.get(getUserInfoApiUrl, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
-                /*params: {
+                params: {
                     email: userEmail,
-                },*/
+                },
             });
             // 가져온 데이터를 상태에 저장
             setUserInfo(response.data);
@@ -119,13 +119,11 @@ export default function MyPagePage(){
             const response = await axios.put(editUserInfoApiUrl, jsonEditForm, {
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${token}}`,
                 },
             });
             console.log('Response from server:', response.data);
             alert("회원정보 수정 완료.")
-            setUserInfo(response.data);
-            console.log('edit User data:', editForm);
         } catch (error){
             console.error('error submitting data:', error);
             alert("회원정보 수정 실패.")

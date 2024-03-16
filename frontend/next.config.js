@@ -11,7 +11,7 @@ module.exports = {
       },
       {
         source: '/users/place/review',
-        destination: `https://0901bced-93ba-491a-9e8f-8bdd4e98870f.mock.pstmn.io/users/place/review`,
+        destination: `https://fbcc7292-503c-46b5-88a1-add73780962d.mock.pstmn.io/users/place/review`,
       },
       {
         source: '/users/profile',
@@ -20,6 +20,10 @@ module.exports = {
       {
         source: '/users/login',
         destination: 'https://5b1b8342-da13-40fb-964d-4ea041ab29cb.mock.pstmn.io/users/login',
+      },
+      {
+        source: '/users/place/reviewList',
+        destination: 'https://63322b46-e4db-4cf3-824b-917a2a3607a0.mock.pstmn.io/users/place/reviewList',
       }
     ];
   },
