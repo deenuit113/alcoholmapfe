@@ -19,7 +19,7 @@ module.exports = {
       },
       {
         source: '/users/login',
-        destination: 'https://5b1b8342-da13-40fb-964d-4ea041ab29cb.mock.pstmn.io/users/login',
+        destination: LOGIN_API_URL + '/users/login',
       },
       {
         source: '/users/place/reviewList',
