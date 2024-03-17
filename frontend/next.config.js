@@ -19,7 +19,7 @@ module.exports = {
       },
       {
         source: '/users/login',
-        destination: LOGIN_API_URL + '/users/login',
+        destination: process.env.LOGIN_API_URL + '/users/login',
       },
       {
         source: '/users/place/reviewList',
