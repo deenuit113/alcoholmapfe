@@ -59,22 +59,24 @@ export default function MyPagePage(){
 
     const fetchData = async () => { // 사용자 정보 받아오기
         try {
+
             // 토큰 decode
-            const token = localStorage.getItem('jwtToken');
+            //const token = localStorage.getItem('jwtToken');
+            const token = 'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImtpbXRheDBAZ21haWwuY29tIiwicGFzc3dvcmQiOiJraW10YXgwMTIzISJ9.E67z1F14tAT1Yz7DeU6LLlBYXLkzHoP8k7qumkn3DgA';
             const decodedToken = jwt.decode(token);
 
             // decode된 토큰에서 사용자 이메일 추출
             const userEmail = decodedToken.sub;
-
-            const getUserInfoApiUrl = `/users/profile/${userEmail}`;
+            const getUserInfoApiUrl = `/users/profile`;
+            //const getUserInfoApiUrl = `/users/profile/${userEmail}`;
             // API 호출
             const response = await axios.get(getUserInfoApiUrl, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
-                params: {
+                /*params: {
                     userEmail: userEmail,
-                },
+                },*/
             });
             // 가져온 데이터를 상태에 저장
             setUserInfo(response.data);
