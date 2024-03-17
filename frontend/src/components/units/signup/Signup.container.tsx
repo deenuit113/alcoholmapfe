@@ -53,8 +53,7 @@ export default function SignupPage(){
     };
 
     const onSendSignupForm = async (signupForm: any) => {
-        signupForm.role = "USER";
-        console.log(signupForm);
+        signupForm.roles = "USER";
         const jsonSignupForm = JSON.stringify(signupForm);
         console.log(jsonSignupForm)
         try {

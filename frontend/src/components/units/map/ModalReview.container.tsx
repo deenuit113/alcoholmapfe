@@ -5,7 +5,7 @@ import axios from 'axios';
 const apiUrl = '/users/place/reviewList';
 
 const ModalReview = (): JSX.Element => {
-    const [data, setData] = useState<{ userId: string; review: string; }[]>([]);
+    const [data, setData] = useState<{ userId: string; review: string; starRate: number;}[]>([]);
     const [isloading, setisLoading] = useState(false);
 
     useEffect(() => {
@@ -33,20 +33,21 @@ const ModalReview = (): JSX.Element => {
 
     // -------test--------
 
-    const generateData = (start: number, end: number): Array<{ userId: string; review: string; }> => {
+    const generateData = (start: number, end: number): Array<{ userId: string; review: string; starRate: number;}> => {
         const data = [];
         for (let i = start; i <= end; i++) {
             data.push({
                 userId: `user${i}`,
                 review: `Review ${i}`,
+                starRate: i,
             });
         }
         return data;
     };
     
     // -------test--------
-
-    /*const fetchData = async () => {
+    /*
+    const fetchData = async () => {
         setisLoading(true);
         setTimeout(() => {
             //const newData = [...data, ...new Array(10).fill('New Data')];
@@ -61,8 +62,13 @@ const ModalReview = (): JSX.Element => {
     
     const fetchData = async () => {
         setisLoading(true);
+        const token = localStorage.getItem('jwtToken');
         try {
-            const response = await axios.get(apiUrl);
+            const response = await axios.get(apiUrl, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
             setData(prevData => [...prevData, ...response.data]);
         } catch (error) {
             console.error('Error fetching data:', error);

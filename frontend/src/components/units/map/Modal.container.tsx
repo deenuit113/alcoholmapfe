@@ -13,7 +13,7 @@ const ModalContainer = (props: IModalProps): JSX.Element => {
     const [isReviewed, setIsReviewed] = useState(false)
     const [reviewForm, setReviewForm] = useState({
         placeId: 0,
-        content: '',
+        content: "",
         starRate: 0,
     });
     const modalRef = useRef<HTMLDivElement>(null);
@@ -107,7 +107,7 @@ const ModalContainer = (props: IModalProps): JSX.Element => {
 
             setReviewForm({
                 placeId: 0,
-                content: '',
+                content: "",
                 starRate: 0,
             });
             setIsReviewed(true);
