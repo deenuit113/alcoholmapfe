@@ -42,6 +42,7 @@ export default function LoginPage(): JSX.Element{
             const response = await axios.post(apiUrl, loginFormJson, {
                 headers: {
                     'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
                 },
             });
             const token = response.data.accessToken;
