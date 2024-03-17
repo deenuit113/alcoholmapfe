@@ -1,5 +1,6 @@
 module.exports = {
   async rewrites() {
+    const LOGIN_API_URL = "https://5b1b8342-da13-40fb-964d-4ea041ab29cb.mock.pstmn.io";
     return [
       {
         source: '/users/signup',
@@ -19,7 +20,7 @@ module.exports = {
       },
       {
         source: '/users/login',
-        destination: `${process.env.LOGIN_API_URL}/users/login`,
+        destination: `${LOGIN_API_URL}/users/login`,
       },
       {
         source: '/users/place/reviewList',

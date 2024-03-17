@@ -1,4 +1,9 @@
 {
+    
+    "env": {
+        "LOGIN_API_URL": "https://5b1b8342-da13-40fb-964d-4ea041ab29cb.mock.pstmn.io"
+    },
+
     "rewrites": [
       {
         "source": "/users/signup",
@@ -24,5 +29,8 @@
         "source": "/users/place/reviewList",
         "destination": "https://63322b46-e4db-4cf3-824b-917a2a3607a0.mock.pstmn.io/users/place/reviewList"
       }
+      
     ]
+    
+    
   }
