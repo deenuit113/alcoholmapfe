@@ -1,30 +1,30 @@
 module.exports = {
   async rewrites() {
-    const LOGIN_API_URL = "https://5b1b8342-da13-40fb-964d-4ea041ab29cb.mock.pstmn.io";
+    const BASE_URL = "https://greenbottle.site";
     return [
       {
         source: '/users/signup',
-        destination: `https://fbcc7292-503c-46b5-88a1-add73780962d.mock.pstmn.io/users/signup`,
+        destination: `${BASE_URL}/users/signup`,
       },
       {
         source: '/users/profile/:email',
-        destination: `https://3d0a7f65-235c-4ea0-ac9c-e7c71a3abbea.mock.pstmn.io/users/profile/:userEmail`,
+        destination: `${BASE_URL}/users/profile/:userEmail`,
       },
       {
         source: '/users/place/review',
-        destination: `https://fbcc7292-503c-46b5-88a1-add73780962d.mock.pstmn.io/users/place/review`,
+        destination: `${BASE_URL}/users/place/review`,
       },
       {
         source: '/users/profile',
-        destination: `https://9834bd63-44b8-4339-b0e3-4dc04a29ae41.mock.pstmn.io/users/profile`,
+        destination: `${BASE_URL}/users/profile`,
       },
       {
         source: '/users/login',
-        destination: `${LOGIN_API_URL}/users/login`,
+        destination: `${BASE_URL}/users/login`,
       },
       {
-        source: '/users/place/reviewList',
-        destination: 'https://63322b46-e4db-4cf3-824b-917a2a3607a0.mock.pstmn.io/users/place/reviewList',
+        source: '/place/review/:placeId',
+        destination: `${BASE_URL}/place/review/:placeId`,
       }
     ];
   },

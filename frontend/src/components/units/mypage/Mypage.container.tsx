@@ -20,7 +20,7 @@ const editUserInfoApiUrl = '/users/profile';
 
 export default function MyPagePage(){
     const router = useRouter()
-    const [isLoggedIn, setLoggedIn] = useState(true);
+    const [isLoggedIn, setLoggedIn] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
     const [userInfo, setUserInfo] = useState<userData>({
         userEmail: "",
