@@ -17,16 +17,18 @@ const ModalReview = (props: IModalReviewProps): JSX.Element => {
     
     useEffect(() => {
         const handleScroll = () => {
-            const scrollHeight = document.documentElement.scrollHeight;
-            const scrollTop = document.documentElement.scrollTop;
-            const clientHeight = document.documentElement.clientHeight;
+            const ReviewDataWrapper = document.getElementById('ReviewDataWrapper');
+            const scrollHeight = ReviewDataWrapper?.scrollHeight;
+            const scrollTop = ReviewDataWrapper?.scrollTop;
+            const clientHeight = ReviewDataWrapper?.clientHeight;
     
-            if (scrollTop + clientHeight >= scrollHeight - 5 && !isloading) {
+            // @ts-ignore
+            if ((scrollTop + clientHeight) / scrollHeight >= 0.99 && !isloading) {
                 fetchData(curPage);
             }
         };
-        const ReviewDataWrapper = document.getElementById('ReviewDataWrapper');
     
+        const ReviewDataWrapper = document.getElementById('ReviewDataWrapper');
         ReviewDataWrapper?.addEventListener('scroll', handleScroll);
     
         return () => {
