@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
   async rewrites() {
     const BASE_URL = "https://greenbottle.site";
     return [
@@ -28,4 +28,4 @@ module.exports = {
       }
     ];
   },
-};
+};*/
