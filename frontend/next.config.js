@@ -1,6 +1,6 @@
-/*module.exports = {
+module.exports = {
   async rewrites() {
-    const BASE_URL = "https://greenbottle.site";
+    const BASE_URL = "https://api.greenbottle.site";
     return [
       {
         source: '/users/signup',
@@ -28,4 +28,4 @@
       }
     ];
   },
-};*/
+};
