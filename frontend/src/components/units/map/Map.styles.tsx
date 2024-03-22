@@ -346,12 +346,12 @@ export const MapWrapper = styled.div`
 `
 
 export const MapMain = styled.main`
-    width: 60%;
+    width: 65%;
     height: 100%;
     position: relative;
     overflow: hidden;
-    border: 20px solid #47C83E;
-    border-radius: 5px;
+    border: 5px solid #47C83E;
+    border-radius: 10px;
     margin-bottom: 10px;
 
     .overlay{
@@ -370,6 +370,7 @@ export const MapMain = styled.main`
         height: 90%;
         margin-top: 10px;
         border: 3px solid #47C83E;
+        border-radius: 5px;
     }
 `
 
@@ -438,9 +439,16 @@ export const MenuWrap = styled.div`
     font-size: 18px;
     border: 5px solid #b7f0b1;
     border-radius: 10px;
+    resize: horizontal; /* 수평 리사이즈만 허용 */
+    min-width: 200px; /* 최소 너비 설정 */
+
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 
     div {
-        font-size: 18px;
+        font-size: 18px; 
         font-weight: bold;
         margin-bottom: 10px;
     }
