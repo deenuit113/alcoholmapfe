@@ -259,8 +259,8 @@ export const CarouselImgWrapper = styled.div<{ isTransitioning: boolean }>`
     justify-content: center;
     overflow: hidden;
 
-    opacity: ${(props) => (props.isTransitioning ? 0.1 : 1)}; /* 트랜지션 중일 때 투명도 설정 */
-    transition: opacity 1s ease; /* opacity 속성에 대한 트랜지션 효과 추가 */
+    opacity: ${(props) => (props.isTransitioning ? 0.3 : 1)}; /* 트랜지션 중일 때 투명도 설정 */
+    transition: opacity 0.8s ease; /* opacity 속성에 대한 트랜지션 효과 추가 */
 `;
 export const MobCarouselImg = styled.img`
     width: 85%;

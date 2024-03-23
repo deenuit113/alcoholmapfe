@@ -1,14 +1,13 @@
 import * as S from "./Map.styles";
 import { IMapUIProps } from "./Map.types";
 import { useState, useRef} from "react";
-import MapHBMenu from "./MapHBMenu";
-import MapHelp from "./MapHelp";
+import MapHBMenu from "../maphbmenu/MapHBMenu";
+import MapHelp from "../maphelp/MapHelp.container";
 
 export default function MapUI(props: IMapUIProps): JSX.Element{
     const [isPlaceListOpen, setIsPlaceListOpen] = useState(true);
     const [isHBMenuOpen, setIsHBMenuOpen] = useState(false);
     const menuWrapRef = useRef<HTMLDivElement>(null); // Ref 생성
-    const [isMenuVisible, setIsMenuVisible] = useState(true);
     const menuWrapWidthThreshold = 100; 
     
     const onClickPlaceListOpen = () => {
