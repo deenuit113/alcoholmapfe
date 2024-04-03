@@ -1,15 +1,29 @@
 import * as S from "./Mypage.styles"
 import { userData, MypageUIProps } from "./Mypage.types";
+import WishListSlider from "./WishListSlider";
 
 
 
 export default function MypageUI({ formMethods, onSubmit, ...props }: MypageUIProps): JSX.Element {
     const { register, handleSubmit, formState: { errors } } = formMethods;
+    const handleProfilePictureChange = (event: any) => {
+        // 선택한 파일 처리
+        const selectedFile = event.target.files[0];
+        // 여기에서 파일 업로드 또는 다른 처리를 수행합니다.
+        // 예: 서버에 업로드하거나 클라이언트 측에서 처리하거나 로컬 스토리지에 저장합니다.
+    };
     return(
         <>
             <S.Wrapper>
                 <S.Logo onClick={props.onClickMoveToMainpage} src="/GreenBottleLogo1.png"></S.Logo>
                 <S.Title>마이페이지</S.Title>
+                <S.ProfilePicWrapper>
+                    <S.ProfilePic src={props.profilePic} alt="프로필 사진" />
+                </S.ProfilePicWrapper>
+                {props.isPicEdit && (
+                        <input type="file" accept="image/*" onChange={handleProfilePictureChange} />
+                    )}
+                <S.ProfilePicEditButton onClick={props.onClickPicEdit}>사진 수정</S.ProfilePicEditButton>
                 <S.UserInfoForm onSubmit= {handleSubmit(onSubmit)}>
                     <S.InfoWrapper>
                         <S.InfoLabel>이메일: </S.InfoLabel>
@@ -74,6 +88,9 @@ export default function MypageUI({ formMethods, onSubmit, ...props }: MypageUIPr
                 <S.WishListWrapper>
                     <S.InfoTitle>찜목록</S.InfoTitle>
                     <S.Label>찜한 가게들의 리스트입니다.</S.Label>
+                    <S.SliderWrapper>
+                        <WishListSlider />
+                    </S.SliderWrapper>
                 </S.WishListWrapper>
                 <S.RatedListWrapper>
                     <S.InfoTitle>평가한 가게</S.InfoTitle>
