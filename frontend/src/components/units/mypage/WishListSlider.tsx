@@ -68,10 +68,10 @@ const WishListSlider: React.FC = () => {
             <S.Slider>
                 {places.map((place) => (
                     <S.PlaceWrapper key={place.id}>
-                        <S.ImgWrapper>
+                        <S.ImgWrapper id="imgwrapper">
                             <S.Image src={place.thumbnailUrl} alt={`Thumbnail ${place.id}`} />
                         </S.ImgWrapper>
-                        <S.PlaceName>{place.name}</S.PlaceName>
+                        <S.PlaceName id="placename">{place.name}</S.PlaceName>
                     </S.PlaceWrapper>
                 ))}
             </S.Slider>

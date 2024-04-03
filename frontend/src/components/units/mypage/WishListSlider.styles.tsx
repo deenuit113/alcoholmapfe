@@ -48,6 +48,17 @@ export const PlaceWrapper = styled.div`
     justify-content: center;
     margin-right: 10px;
     text-align: center;
+
+    :hover{
+        #placename {
+            opacity: 1;
+        }
+        
+        #imgwrapper {
+            filter: brightness(50%);
+        }
+
+    }
 `
 
 export const ImgWrapper = styled.div`
@@ -60,9 +71,6 @@ export const ImgWrapper = styled.div`
     border: 3px solid blue;
     filter: brightness(100%);
     transition: filter 0.5s ease-in-out;
-    :hover{
-        filter: brightness(50%);
-    }
 `
 
 export const PlaceName = styled.div`
@@ -75,8 +83,5 @@ export const PlaceName = styled.div`
     text-align: center;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-    :hover{
-        opacity: 1;
-    }
 `;
 
