@@ -12,15 +12,47 @@ export const SliderWrapper = styled.div`
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
+    @media all and (min-width: 359px) and (max-width: 799px) {
+        // 태블릿
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    }
 `;
 
 export const Slider = styled.div`
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    overflow-x: auto;
+    overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
+
+    &::-webkit-scrollbar {
+        width: 15px;
+        height: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 8px;
+    }
+
+    &:hover {
+        &::-webkit-scrollbar {
+            width: 12px;
+        }
+    }
 
     @media all and (min-width: 359px) and (max-width: 799px) {
         // 태블릿
@@ -61,6 +93,22 @@ export const PlaceWrapper = styled.div`
     }
 `
 
+export const LoadingSkeletonWrapper = styled.div`
+    position: relative;
+    width: 100px;
+    min-width: 100px;
+    height: 100px;
+    box-shadow: 0px 0px 10px gray;
+    border: 1px solid gray;
+    border-radius: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    text-align: center;
+`
+
 export const ImgWrapper = styled.div`
     width: 100px;
     height: 100px;
@@ -68,7 +116,6 @@ export const ImgWrapper = styled.div`
     align-items: center;
     text-align: center;
     justify-content: center;
-    border: 3px solid blue;
     filter: brightness(100%);
     transition: filter 0.5s ease-in-out;
 `
