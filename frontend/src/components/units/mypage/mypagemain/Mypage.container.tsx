@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import { userData } from './Mypage.types'
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { mypageEditSchema } from "../../../commons/util/yupSchemas";
+import { mypageEditSchema } from "../../../../commons/util/yupSchemas";
 
 const UserInfoApiUrl = '/users/profile';
 
@@ -21,8 +21,8 @@ export default function MyPagePage(){
         password: "",
         nickname: "",
         capaSoju: 0,
-        // 찜한가게 (가게 이름, 위도 경도 값)
-        // 평가한 가게 (가게 이름, 위도 경도 값, 평점, 리뷰)
+        // 찜한가게 (가게 이름, 주소 값)
+        // 평가한 가게 (가게 이름, 주소 값, 평점, 리뷰)
     });
     // react-hook-form과 yup 이용한 회원정보 폼 관리
     const { register, handleSubmit, formState } = useForm<userData>({
@@ -46,8 +46,9 @@ export default function MyPagePage(){
             //router.push('../login');
         } else{
             getUserInfo();
+            setIsPicEdit(false);
         }
-    }, [isEdit]);
+    }, [isEdit, isPicEdit]);
     // 사용자 정보 받아오기
     const getUserInfo = async () => { 
         try {
@@ -111,10 +112,6 @@ export default function MyPagePage(){
     const onClickEdit = (): void => {
         setIsEdit(true);
     }
-    // 프로필 사진 수정 버튼
-    const onClickPicEdit = (): void => {
-        setIsPicEdit(true);
-    }
     // 메인페이지로 이동
     const onClickMoveToMainpage = (): void => {
         router.push("../map")
@@ -129,8 +126,8 @@ export default function MyPagePage(){
             formMethods={{ register, handleSubmit, formState }}
             onSubmit={onSubmitEditform}
             onClickEdit={onClickEdit}
-            onClickPicEdit={onClickPicEdit}
             onClickMoveToMainpage = {onClickMoveToMainpage}
+            setIsPicEdit={setIsPicEdit}
         />
         
     )

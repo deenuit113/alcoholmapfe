@@ -11,7 +11,7 @@ export interface userData {
 type PickFormMethods = Pick<UseFormReturn<userData>, 'register' | 'handleSubmit' | 'formState'>;
 
 // Mypage presenter interface
-export interface MypageUIProps {
+export interface IMypageUIProps {
     userInfo: userData;
     profilePic: string;
     isEdit: boolean;
@@ -19,6 +19,6 @@ export interface MypageUIProps {
     formMethods: PickFormMethods;
     onSubmit: SubmitHandler<userData>;
     onClickEdit: () => void;
-    onClickPicEdit: () => void;
     onClickMoveToMainpage: () => void;
+    setIsPicEdit: (value: boolean) => void;
 }
