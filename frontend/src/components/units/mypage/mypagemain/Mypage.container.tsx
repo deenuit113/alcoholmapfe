@@ -42,11 +42,12 @@ export default function MyPagePage(){
     useEffect(() => {
         checkIsLoggedIn();
         if(!isLoggedIn){
-            alert("로그인 후 이용해주세요");
+            //alert("로그인 후 이용해주세요");
             //router.push('../login');
         } else{
             getUserInfo();
             setIsPicEdit(false);
+            console.log("rerendering");
         }
     }, [isEdit, isPicEdit]);
     // 사용자 정보 받아오기
@@ -79,7 +80,7 @@ export default function MyPagePage(){
         const token = localStorage.getItem('jwtToken');
         if (!token) {
             console.error("Token not found in local storage");
-            alert("마이페이지 조회 실패.")
+            //alert("마이페이지 조회 실패.")
         }
         setLoggedIn(true);
     };
