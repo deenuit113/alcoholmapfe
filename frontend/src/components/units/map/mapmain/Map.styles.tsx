@@ -125,6 +125,7 @@ export const NavButton = styled.button`
     width: 130px;
     float: right;
     margin-left: 10px;
+    margin-bottom: 10px;
     background-color: #B7F0B1;
     border: 5px solid #47C83E;
     border-radius: 8px;
