@@ -1,46 +1,47 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson-client';
+import MapKoreaPageUI from './MapKorea.presenter';
+import { useRouter } from 'next/router';
+import { BarData } from './MapKorea.types';
 
 export default function MapKoreaPage(): JSX.Element{
     const svgRef = useRef<SVGSVGElement>(null);
+    const [name, setName] = useState<string>("");
+    const [top10Bars, setTop10Bars] = useState<BarData[]>([]);
+    const router = useRouter();
 
     useEffect(() => {
         const svg = d3.select(svgRef.current);
-
-        // 경계선 JSON 데이터 가져오기
+        // -----------------------------
+        const dummyData = generateDummyData();
+        setTop10Bars(dummyData);
+        // -----------------------------
         fetch('/koreaborderdata.json')
             .then(response => response.json())
             .then(koreaMapData => {
-                // 경계선을 그리는 함수
                 const drawMap = (data: any) => {
-                    const projection = d3.geoMercator().fitSize([500, 500], data);
+                    const projection = d3.geoMercator().fitSize([380, 380], data);
                     const path = d3.geoPath(projection);
 
-                    // 경계선을 그림
                     svg.selectAll("path")
                         .data(data.features)
                         .enter().append("path")
                         .attr("d", path)
                         .attr("stroke", "black")
                         .attr("fill", "lightgray")
-                        // 각 도를 클릭할 수 있도록 이벤트 핸들러 추가
                         .on("click", (event: MouseEvent, d: any) => handleMapClick(d.properties.name))
-                        // 마우스 호버 효과 추가
-                        // 마우스 호버 효과 및 커서 변경 추가
                         .on("mouseover", function(this: SVGPathElement, event: MouseEvent, d: any) {
                           d3.select(this)
-                              .attr("fill", "skyblue")
-                              .style("cursor", "pointer"); // 커서 변경
+                              .attr("fill", "#4caf50")
+                              .style("cursor", "pointer");
                         })
                         .on("mouseout", function(this: SVGPathElement, event: MouseEvent, d: any) {
                           d3.select(this)
                               .attr("fill", "lightgray")
-                              .style("cursor", "default"); // 원래 커서로 변경
+                              .style("cursor", "default");
                         });
                 };
-
-                // 대한민국 지도 그리기
                 drawMap(topojson.feature(koreaMapData, koreaMapData.objects.skorea_provinces_2018_geo));
             })
             .catch(error => {
@@ -48,13 +49,55 @@ export default function MapKoreaPage(): JSX.Element{
             });
     }, []);
 
-    // 클릭한 도의 이름을 출력하는 함수
     const handleMapClick = (name: string) => {
         console.log(`Clicked on ${name}`);
-        // 이 부분에서 클릭한 도에 대한 추가 작업을 수행할 수 있습니다.
+        setName(name);
     };
 
+    const onClickMovetoMapPage = () => {
+        router.push({
+            pathname: '/map',
+            query: {
+                keyword: `${name} 술집`
+            }
+        })
+    };
+
+    const onClickMoveToMainPage = () => {
+        router.push('/map')
+    };
+
+    const onClickMoveToThisBar = (address: string) => {
+        router.push({
+            pathname: '/map',
+            query: {
+                keyword: address
+            }
+        });
+    };
+
+    // -----------------------
+    const generateDummyData = (): BarData[] => {
+        const dummyData = [];
+        for (let i = 1; i <= 10; i++) {
+            dummyData.push({
+                name: `주점 ${i}`,
+                rating: Math.floor(Math.random() * 5) + 1, // 랜덤한 평점 (1~5)
+                reviewCount: Math.floor(Math.random() * 100) + 1, // 랜덤한 리뷰 갯수 (1~100)
+                address: `서울 도봉구 노해로 384`, // 더미 주소
+            });
+        }
+        return dummyData;
+    };
+    // ------------------------
     return (
-        <svg ref={svgRef} width="500" height="500"></svg>
+        <MapKoreaPageUI
+            svgRef={svgRef}
+            name={name}
+            onClickMoveToMapPage = {onClickMovetoMapPage}
+            onClickMoveToMainPage = {onClickMoveToMainPage}
+            top10Bars={top10Bars}
+            onClickMoveToThisBar={onClickMoveToThisBar}
+        />
     );
 };
