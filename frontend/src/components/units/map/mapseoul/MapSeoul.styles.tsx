@@ -131,5 +131,5 @@ export const RankWrapper = styled.div`
     font-size: 30px;
     font-weight: bolder;
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 20px;
 `
