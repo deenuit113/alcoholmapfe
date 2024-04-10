@@ -14,9 +14,9 @@ Modal.setAppElement('#__next');
 
 export default function MapPage(): JSX.Element{
     const router = useRouter()
-    const { keyword: initialKeyword } = router.query;
-
-    const [keyword, setKeyword] = useState<string>(initialKeyword ? String(initialKeyword) : "술집");
+    const { address: initialAddress, placeName: initialPlaceName } = router.query;
+    const initialKeyword = initialAddress && initialPlaceName ? `${initialAddress} ${initialPlaceName}` : '술집';
+    const [keyword, setKeyword] = useState<string>(initialKeyword);
     const [kwError, setKwError] = useState("");
     const [options, setOptions] = useState<Options | null>({
         center: null,
@@ -177,6 +177,7 @@ export default function MapPage(): JSX.Element{
                     level: 5,
                     //level = level,
                 });
+                console.log(result);
             } else{
                 //console.error('Error handling map drag end: ps is null')
             }
