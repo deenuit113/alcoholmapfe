@@ -6,7 +6,7 @@ export default function MainPage(): JSX.Element {
     const router = useRouter();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
-    const [isFlashing, setIsFlashing] = useState(false);
+    const [isFlashing, setIsFlashing] = useState(true);
 
 
     const mobimages = [
